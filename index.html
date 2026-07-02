@@ -46,16 +46,39 @@
     linear-gradient(45deg,#0b0d10 25%,transparent 25%,transparent 75%,#0b0d10 75%);
   background-color:#cfd3d8; background-size:20px 20px; background-position:0 0,10px 10px; opacity:.9;
 }
+
+/* Updated Header Styles for Smooth Sliding Animation */
 #atlas-root header.site{
   position:sticky; top:0; z-index:50; background:linear-gradient(180deg,#101319,#0b0d10 90%);
   border-bottom:3px solid var(--race-red); box-shadow:0 6px 18px rgba(0,0,0,.45);
+  transition: transform 0.3s ease-in-out; 
+  will-change: transform;
 }
-#atlas-root .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 24px; max-width:1120px; margin:0 auto; flex-wrap:wrap; gap:12px;}
-#atlas-root nav.links{display:flex; gap:22px; align-items:center; flex-wrap:wrap;}
+/* This class will automatically be applied by JavaScript when scrolling down */
+#atlas-root header.site.header-hidden {
+  transform: translateY(-101%);
+}
+
+#atlas-root .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 24px; max-width:1120px; margin:0 auto; gap:12px;}
+#atlas-root nav.links{display:flex; gap:22px; align-items:center;}
 #atlas-root nav.links a{color:var(--paper-dim); font-weight:700; letter-spacing:.5px; text-transform:uppercase; font-size:14px; padding:6px 2px; border-bottom:2px solid transparent;}
 #atlas-root nav.links a:hover,#atlas-root nav.links a.active{color:var(--paper); border-color:var(--race-red);}
 #atlas-root .nav-call{background:var(--race-red); color:#fff !important; padding:10px 16px !important; border-radius:6px; border-bottom:none !important; font-family:'Anton',sans-serif; letter-spacing:1px;}
 #atlas-root .nav-call:hover{background:var(--race-red-lt); color:#fff !important;}
+
+/* Hamburger Button Icon Styling */
+#atlas-root .menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--paper);
+  font-size: 32px;
+  cursor: pointer;
+  padding: 8px;
+  line-height: 1;
+  z-index: 100;
+}
+
 #atlas-root .hero{position:relative; overflow:hidden; padding:86px 24px 70px;
   background:linear-gradient(180deg,rgba(13,31,87,.35),transparent 60%),
     repeating-linear-gradient(-35deg,rgba(255,255,255,.03) 0 3px,transparent 3px 46px), var(--asphalt);
@@ -154,21 +177,61 @@
 #atlas-root .timeline .yr{font-family:'Anton',sans-serif; color:var(--steel-blue-3); font-size:14px; letter-spacing:1px;}
 #atlas-root .timeline h3{font-size:19px; margin:4px 0 6px; color:var(--paper);}
 #atlas-root .timeline p{color:var(--paper-dim); margin:0;}
+
+/* Responsive Layout Adjustments for Tablet and Mobile Screens */
 @media (max-width:860px){
   #atlas-root .grid-3, #atlas-root .warranty, #atlas-root .contact-grid, #atlas-root .about-hero{grid-template-columns:1fr;}
 }
 @media (max-width:900px){ #atlas-root .steps{grid-template-columns:1fr 1fr;} }
 @media (max-width:560px){ #atlas-root .steps{grid-template-columns:1fr;} }
+
+/* Mobile Navigation Breakpoint Override Engine */
+@media (max-width: 960px) {
+  #atlas-root .menu-toggle {
+    display: block; /* Turns on the ☰ button */
+  }
+  #atlas-root nav.links {
+    display: none; /* Hides original desktop linear horizontal view */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #101319;
+    border-bottom: 3px solid var(--race-red);
+    padding: 24px;
+    gap: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    align-items: stretch;
+    text-align: center;
+  }
+  /* Active state toggle configuration activated through JS injection */
+  #atlas-root nav.links.mobile-open {
+    display: flex;
+  }
+  #atlas-root nav.links a {
+    font-size: 18px;
+    padding: 10px 0;
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  #atlas-root .nav-call {
+    margin-top: 8px;
+  }
+}
 </style>
 
-<header class="site">
+<header class="site" id="atlas-site-header">
   <div class="nav">
     <div class="brand">
       <a onclick="atlasShow('home')" style="display: block;">
         <img src="logo.png" alt="Atlas Motors Logo" style="height: 175px; width: auto; display: block;">
       </a>
     </div>
-    <nav class="links">
+    
+    <button class="menu-toggle" id="atlas-hamburger" aria-label="Toggle Navigation Menu">☰</button>
+    
+    <nav class="links" id="atlas-nav-links">
       <a data-page="home" onclick="atlasShow('home')" class="active">Home</a>
       <a data-page="about" onclick="atlasShow('about')">About</a>
       <a onclick="atlasShow('home','atlas-services')">Services</a>
@@ -345,10 +408,10 @@
     <div class="wrap">
       <div class="section-head center"><div class="kicker">Our Approach</div><h2>How We Work On Every Car</h2></div>
       <div class="timeline" style="max-width:700px; margin:0 auto;">
-        <div class="tl-item"><div class="yr">Step One</div><h3>Listen First</h3><p>Every job starts with your description of the problem — noises, warning lights, when it happens. That context shapes the diagnosis.</p></div>
-        <div class="tl-item"><div class="yr">Step Two</div><h3>Diagnose Before We Sell</h3><p>We confirm the actual root cause before quoting parts or labor, so you're not paying to guess.</p></div>
-        <div class="tl-item"><div class="yr">Step Three</div><h3>Fix It Right, On-Site</h3><p>Our vans carry the tools and common parts to close out most jobs in a single visit.</p></div>
-        <div class="tl-item"><div class="yr">Step Four</div><h3>Stand Behind The Work</h3><p>90 days of labor coverage, a written summary of what was done, and a straight answer if something comes back.</p></div>
+        <div class="tl-item"><div class="yr">Step One</div><h2>Listen First</h2><p>Every job starts with your description of the problem — noises, warning lights, when it happens. That context shapes the diagnosis.</p></div>
+        <div class="tl-item"><div class="yr">Step Two</div><h2>Diagnose Before We Sell</h2><p>We confirm the actual root cause before quoting parts or labor, so you're not paying to guess.</p></div>
+        <div class="tl-item"><div class="yr">Step Three</div><h2>Fix It Right, On-Site</h2><p>Our vans carry the tools and common parts to close out most jobs in a single visit.</p></div>
+        <div class="tl-item"><div class="yr">Step Four</div><h2>Stand Behind The Work</h2><p>90 days of labor coverage, a written summary of what was done, and a straight answer if something comes back.</p></div>
       </div>
     </div>
   </section>
@@ -536,6 +599,11 @@
 <script>
 (function(){
   document.getElementById('atlas-year').textContent = new Date().getFullYear();
+  
+  var navLinksContainer = document.getElementById('atlas-nav-links');
+  var hamburgerButton = document.getElementById('atlas-hamburger');
+
+  // Navigation Engine
   window.atlasShow = function(page, scrollToId){
     var pages = document.querySelectorAll('#atlas-root .page');
     for (var i=0; i<pages.length; i++){ pages[i].classList.remove('active'); }
@@ -544,6 +612,14 @@
     for (var j=0; j<links.length; j++){ links[j].classList.remove('active'); }
     var current = document.querySelector('#atlas-root nav.links a[data-page="' + page + '"]');
     if (current) { current.classList.add('active'); }
+    
+    // Auto-close mobile menu wrapper instantly when a link path is taken
+    if (navLinksContainer) { navLinksContainer.classList.remove('mobile-open'); }
+    
+    // Ensure header is fully visible upon navigation
+    var header = document.getElementById('atlas-site-header');
+    if (header) { header.classList.remove('header-hidden'); }
+    
     window.scrollTo(0,0);
     if (scrollToId){
       setTimeout(function(){
@@ -552,6 +628,48 @@
       }, 60);
     }
   };
+
+  // Toggle Hamburger Open/Closed Mechanics
+  if (hamburgerButton && navLinksContainer) {
+    hamburgerButton.addEventListener('click', function(e) {
+      e.stopPropagation();
+      navLinksContainer.classList.toggle('mobile-open');
+    });
+
+    // Close mobile menu container if a user clicks outside of it entirely
+    document.addEventListener('click', function() {
+      navLinksContainer.classList.remove('mobile-open');
+    });
+  }
+
+  // Smart Header Scroll Tracker Logic
+  var lastScrollTop = 0;
+  var header = document.getElementById('atlas-site-header');
+  var scrollThreshold = 10; 
+
+  window.addEventListener('scroll', function() {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollTop < 0) scrollTop = 0;
+
+    // Only hide if mobile dropdown is NOT open right now
+    var mobileMenuIsOpen = navLinksContainer && navLinksContainer.classList.contains('mobile-open');
+
+    if (scrollTop > 150 && !mobileMenuIsOpen) {
+      if (scrollTop > lastScrollTop + scrollThreshold) {
+        // User is scrolling down -> Hide header
+        header.classList.add('header-hidden');
+      } else if (scrollTop < lastScrollTop - scrollThreshold) {
+        // User is scrolling up -> Show header instantly
+        header.classList.remove('header-hidden');
+      }
+    } else {
+      header.classList.remove('header-hidden');
+    }
+
+    lastScrollTop = scrollTop;
+  }, { passive: true });
+
 })();
 </script>
 
