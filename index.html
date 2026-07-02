@@ -51,7 +51,6 @@
   border-bottom:3px solid var(--race-red); box-shadow:0 6px 18px rgba(0,0,0,.45);
 }
 #atlas-root .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 24px; max-width:1120px; margin:0 auto; flex-wrap:wrap; gap:12px;}
-#atlas-root .brand .tagline{color:var(--race-red-lt); font-family:'Anton',sans-serif; font-size:13px; letter-spacing:1px; text-transform:uppercase; margin-top:4px;}
 #atlas-root nav.links{display:flex; gap:22px; align-items:center; flex-wrap:wrap;}
 #atlas-root nav.links a{color:var(--paper-dim); font-weight:700; letter-spacing:.5px; text-transform:uppercase; font-size:14px; padding:6px 2px; border-bottom:2px solid transparent;}
 #atlas-root nav.links a:hover,#atlas-root nav.links a.active{color:var(--paper); border-color:var(--race-red);}
@@ -165,12 +164,9 @@
 <header class="site">
   <div class="nav">
     <div class="brand">
-      <div>
-        <a onclick="atlasShow('home')" style="display: block;">
-          <img src="logo.png" alt="Atlas Motors Logo" style="height: 65px; width: auto; display: block;">
-        </a>
-        <div class="tagline">Because RACECAR</div>
-      </div>
+      <a onclick="atlasShow('home')" style="display: block;">
+        <img src="logo.png" alt="Atlas Motors Logo" style="height: 65px; width: auto; display: block;">
+      </a>
     </div>
     <nav class="links">
       <a data-page="home" onclick="atlasShow('home')" class="active">Home</a>
