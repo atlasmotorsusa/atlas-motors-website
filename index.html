@@ -177,6 +177,16 @@
 #atlas-root .timeline h3{font-size:19px; margin:4px 0 6px; color:var(--paper);}
 #atlas-root .timeline p{color:var(--paper-dim); margin:0;}
 
+/* New styles for Testimonials element mechanics */
+#atlas-root .review-stars{color:#f5b041; font-size:16px; letter-spacing:1px; margin-bottom:6px;}
+#atlas-root .review-meta{display:flex; justify-content:space-between; align-items:center; margin-top:14px; border-top:1px solid rgba(255,255,255,.08); padding-top:10px; font-size:14px;}
+#atlas-root .review-author{color:var(--paper); font-weight:700;}
+#atlas-root .review-car{color:var(--race-red-lt); font-weight:600; text-transform:uppercase; font-size:12px; letter-spacing:0.5px;}
+
+/* Service Area Inline Badge Mechanics */
+#atlas-root .area-grid{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;}
+#atlas-root .area-badge{background:var(--panel-light); border:1px solid #333; border-radius:4px; padding:6px 12px; font-size:14px; font-weight:600; color:var(--paper);}
+
 /* Responsive Layout Breakpoints */
 @media (max-width:860px){
   #atlas-root .grid-3, #atlas-root .warranty, #atlas-root .contact-grid, #atlas-root .about-hero{grid-template-columns:1fr;}
@@ -327,12 +337,47 @@
     </div>
   </section>
 
-  <section class="alt" id="atlas-faq">
+  <section class="alt" id="atlas-testimonials">
+    <div class="wrap">
+      <div class="section-head center">
+        <div class="kicker">Reviews from the Pavement</div>
+        <h2>What Your Neighbors Say</h2>
+        <p>Read real feedback from local drivers who skipped the shop lobby entirely.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="plate"><span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+          <div class="review-stars">★★★★★</div>
+          <p style="font-size:16px; margin:0; font-style:italic;">"My starter motor died on a Thursday morning. Atlas came right to my workplace parking garage and swapped it out while I was at my desk. Incredible service, zero hassle."</p>
+          <div class="review-meta"><span class="review-author">Marcus T.</span><span class="review-car">Honda Civic</span></div>
+        </div>
+        <div class="plate"><span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+          <div class="review-stars">★★★★★</div>
+          <p style="font-size:16px; margin:0; font-style:italic;">"Outstanding pricing transparency. Got my front brake pads and rotors changed right in my driveway. No upsell attempts for fake problems like the big shops do."</p>
+          <div class="review-meta"><span class="review-author">Sarah L.</span><span class="review-car">Toyota RAV4</span></div>
+        </div>
+        <div class="plate"><span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+          <div class="review-stars">★★★★★</div>
+          <p style="font-size:16px; margin:0; font-style:italic;">"Had them look at a used truck I wanted to buy. The pre-purchase inspection saved me from making a huge $5,000 mistake with a hidden transmission fault. Worth every penny."</p>
+          <div class="review-meta"><span class="review-author">David K.</span><span class="review-car">Ford F-150</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="checker-strip"></div>
+
+  <section id="atlas-faq">
     <div class="wrap">
       <div class="section-head center"><div class="kicker">Questions</div><h2>Frequently Asked</h2></div>
       <div style="max-width:760px;margin:0 auto;">
         <details class="faq"><summary>What areas do you service?</summary>
           <p>We come to you within our local service radius. Tell us your address or zip code when booking and we'll confirm coverage — if you're outside the zone we'll let you know before scheduling anything.</p></details>
+        <details class="faq"><summary>What kind of driveway or space do you need?</summary>
+          <p>We just need a relatively flat asphalt or concrete driveway, a dedicated parking space, or a quiet curbside street option where we can safely stand near your vehicle with access for our mobile tool van.</p></details>
+        <details class="faq"><summary>What happens if the weather is bad (heavy rain, storms)?</summary>
+          <p>If harsh outdoor weather conditions create a safety hazard or compromise the quality of the precision mechanical repair, we will proactively reach out to arrange a hassle-free reschedule at your very earliest convenience.</p></details>
+        <details class="faq"><summary>Do I need to be stuck waiting at home during the appointment?</summary>
+          <p>Not at all! That is the beauty of mobile service. As long as you introduce yourself at the start, hand off the keys, and point us to the vehicle, you are free to work inside, run errands, or relax. We will text you a summary when completed.</p></details>
         <details class="faq"><summary>Do you supply the parts?</summary>
           <p>Yes, in most cases we source and bring quality parts to the job. You're also welcome to supply your own parts; if you do, we'll install them but can't warranty the part itself.</p></details>
         <details class="faq"><summary>How do I pay?</summary>
@@ -343,325 +388,3 @@
           <p>Diagnostic pricing is quoted before we arrive and is typically credited toward the repair if you move forward with us.</p></details>
       </div>
     </div>
-  </section>
-
-  <div class="checker-strip"></div>
-
-  <section id="atlas-contact">
-    <div class="wrap">
-      <div class="section-head center"><div class="kicker">Get In Touch</div><h2>Book Your Mobile Service</h2>
-        <p>Fill out the form or reach us directly — we usually reply same day.</p></div>
-      <div class="contact-grid">
-        <div>
-          <div class="contact-item"><div><span class="tag">Call / Text</span><a href="tel:5102002033">510-200-2033</a></div></div>
-          <div class="contact-item"><div><span class="tag">Email</span><a href="mailto:service@atlasmotorsusa.com">service@atlasmotorsusa.com</a></div></div>
-          <div class="contact-item"><div><span class="tag">Service Hours</span><span>Mon&ndash;Sat, 8 AM &ndash; 6 PM</span></div></div>
-          <div class="contact-item"><div><span class="tag">Coverage</span><span>Ask us — tell us your zip when you book</span></div></div>
-        </div>
-        <form class="book" action="mailto:service@atlasmotorsusa.com" method="post" enctype="text/plain">
-          <div><label for="atlas-name">Name</label><input id="atlas-name" name="Name" type="text" required></div>
-          <div><label for="atlas-phone">Phone</label><input id="atlas-phone" name="Phone" type="tel" required></div>
-          <div><label for="atlas-vehicle">Vehicle (year / make / model)</label><input id="atlas-vehicle" name="Vehicle" type="text"></div>
-          <div><label for="atlas-issue">What's going on?</label><textarea id="atlas-issue" name="Issue" rows="4"></textarea></div>
-          <button type="submit" class="btn btn-red" style="align-self:flex-start;">Send Request</button>
-        </form>
-      </div>
-    </div>
-  </section>
-</div>
-
-<div class="page" id="page-about">
-  <section class="hero" style="padding-bottom:50px;">
-    <div class="wrap about-hero">
-      <div>
-        <div class="hero-eyebrow">Who We Are</div>
-        <h1 style="font-size:clamp(38px,6vw,64px);">Gearheads With<br><span class="grey">A House Call.</span></h1>
-        <p class="sub">Atlas Motors started with a simple complaint: getting your car fixed
-          shouldn't mean losing a day to a waiting room. So we put the shop in a van
-          and brought it to the driveway instead.</p>
-      </div>
-      <div class="plate blue"><span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
-        <div class="icon">Our Word</div><h3 style="color:#fff;">The Atlas Standard</h3>
-        <p style="color:#dbe4fb;">Straight quotes before we start. Labor we stand behind.
-          Parts explained honestly — including what's covered and by whom. No upsells for things your car doesn't need.</p></div>
-    </div>
-  </section>
-
-  <div class="checker-strip"></div>
-
-  <section>
-    <div class="wrap">
-      <div class="section-head center"><div class="kicker">Why Mobile</div><h2>The Shop Comes To You</h2></div>
-      <div class="grid grid-3">
-        <div class="plate"><span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
-          <div class="icon">01</div><h3>No Tow, No Downtime</h3><p>Most repairs happen right where your car already is — home, work, or the side of the road.</p></div>
-        <div class="plate"><span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
-          <div class="icon">02</div><h3>Transparent Pricing</h3><p>You get a quote before we turn a wrench — not a surprise number when you go to pay.</p></div>
-        <div class="plate"><span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
-          <div class="icon">03</div><h3>Real Talk, No Upsell</h3><p>If your car doesn't need it, we won't sell it to you. We'd rather earn a repeat customer.</p></div>
-    </div>
-  </section>
-
-  <section class="alt">
-    <div class="wrap">
-      <div class="section-head center"><div class="kicker">Our Approach</div><h2>How We Work On Every Car</h2></div>
-      <div class="timeline" style="max-width:700px; margin:0 auto;">
-        <div class="tl-item"><div class="yr">Step One</div><h3>Listen First</h3><p>Every job starts with your description of the problem — noises, warning lights, when it happens. That context shapes the diagnosis.</p></div>
-        <div class="tl-item"><div class="yr">Step Two</div><h3>Diagnose Before We Sell</h3><p>We confirm the actual root cause before quoting parts or labor, so you're not paying to guess.</p></div>
-        <div class="tl-item"><div class="yr">Step Three</div><h3>Fix It Right, On-Site</h3><p>Our vans carry the tools and common parts to close out most jobs in a single visit.</p></div>
-        <div class="tl-item"><div class="yr">Step Four</div><h3>Stand Behind The Work</h3><p>Honest warranty rules, a written summary of what was done, and a straight answer if something comes back.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="checker-strip"></div>
-
-  <section>
-    <div class="wrap">
-      <div class="section-head center"><div class="kicker">Ready When You Are</div><h2>Let's Get Your Car Sorted</h2><p style="margin-top:6px;">No shop visit required.</p></div>
-      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-        <a onclick="atlasShow('home','atlas-contact')" class="btn btn-red">Book a Service</a>
-        <a href="tel:5102002033" class="btn btn-steel">Call 510-200-2033</a>
-      </div>
-    </div>
-  </section>
-</div>
-
-<div class="page" id="page-privacy">
-  <div class="legal">
-    <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: July 1, 2026</p>
-    <p>Atlas Motors ("Atlas Motors," "we," "us," or "our") operates atlasmotorsusa.com
-    (the "Site") and provides mobile automotive repair and maintenance services
-    (the "Services"). This Privacy Policy explains what information we collect,
-    how we use it, and the choices you have.</p>
-    <h2>1. Information We Collect</h2>
-    <ul>
-      <li><strong>Information you give us directly</strong> — such as your name, phone number, email address, home or work address, and vehicle details, when you request a quote, book a service, or contact us by phone, text, email, or the form on this Site.</li>
-      <li><strong>Service and vehicle information</strong> — details about your vehicle's condition, mileage, symptoms, and repair history that we collect while diagnosing or servicing your vehicle.</li>
-      <li><strong>Payment information</strong> — if you pay by card or digital payment, that transaction is processed by our third-party payment processor. We do not store full card numbers on our own systems.</li>
-      <li><strong>Automatically collected information</strong> — if you visit this Site, our hosting provider or analytics tools may collect standard technical data such as your IP address, browser type, and pages visited.</li>
-    </ul>
-    <h2>2. How We Use Your Information</h2>
-    <ul>
-      <li>To schedule, perform, and follow up on repair and maintenance services.</li>
-      <li>To communicate with you about appointments, quotes, invoices, and service history.</li>
-      <li>To process payment for services rendered.</li>
-      <li>To improve our Services, scheduling, and this Site.</li>
-      <li>To comply with legal, tax, and recordkeeping obligations.</li>
-    </ul>
-    <p>We do not sell your personal information.</p>
-    <h2>3. How We Share Information</h2>
-    <ul>
-      <li><strong>Service providers</strong> — such as payment processors, scheduling or invoicing software, and parts suppliers, solely to complete your service.</li>
-      <li><strong>Legal requirements</strong> — if required by law, subpoena, or to protect the rights, safety, or property of Atlas Motors, our customers, or others.</li>
-      <li><strong>Business transfers</strong> — if Atlas Motors is involved in a merger, acquisition, or sale of assets, customer information may be transferred as part of that transaction.</li>
-    </ul>
-    <h2>4. Data Retention</h2>
-    <p>We keep customer and service records for as long as reasonably necessary to
-    provide our Services, support any applicable labor warranty, and satisfy
-    legal, accounting, or tax requirements.</p>
-    <h2>5. Your Choices</h2>
-    <ul>
-      <li>You may ask us to correct or update your contact information at any time.</li>
-      <li>You may ask us to delete personal information we hold about you, subject to our legal and recordkeeping obligations.</li>
-    </ul>
-    <h2>6. Security</h2>
-    <p>We take reasonable steps to protect your information, but no method of
-    storage or transmission is completely secure. We cannot guarantee absolute
-    security of information you share with us.</p>
-    <h2>7. Children's Privacy</h2>
-    <p>Our Services are directed at adults and vehicle owners. We do not knowingly
-    collect personal information from children under 13.</p>
-    <h2>8. Changes to This Policy</h2>
-    <p>We may update this Privacy Policy from time to time. The "Last updated"
-    date at the top of this page reflects the most recent revision.</p>
-    <h2>9. Contact Us</h2>
-    <p>Questions about this Privacy Policy or your information can be sent to
-    <a href="mailto:service@atlasmotorsusa.com">service@atlasmotorsusa.com</a>
-    or by calling <a href="tel:5102002033">510-200-2033</a>.</p>
-  </div>
-</div>
-
-<div class="page" id="page-terms">
-  <div class="legal">
-    <h1>Terms of Service</h1>
-    <p class="updated">Last updated: July 1, 2026</p>
-    <p>These Terms of Service ("Terms") govern your use of atlasmotorsusa.com
-    (the "Site") and any mobile automotive repair and maintenance services
-    ("Services") provided by Atlas Motors ("Atlas Motors," "we," "us," "our").
-    By booking a Service or using this Site, you agree to these Terms.</p>
-    <h2>1. Our Services</h2>
-    <p>Atlas Motors provides on-site automotive diagnostic, repair, and
-    maintenance services at a customer-provided location within our service
-    area. Availability of specific repairs depends on the tools and parts that
-    can reasonably be brought to that location; some repairs may require a
-    fixed shop and will be identified as such before work begins.</p>
-    <h2>2. Quotes and Pricing</h2>
-    <ul>
-      <li>Quotes are estimates based on the information you provide before the visit. The final price may change if the technician discovers additional issues once the vehicle is inspected in person.</li>
-      <li>We will communicate any change in scope or price before performing additional work, whenever reasonably possible.</li>
-      <li>Diagnostic fees, if applicable, will be disclosed before the visit.</li>
-    </ul>
-    <h2>3. Labor Warranty — What's Guaranteed</h2>
-    <p>Atlas Motors guarantees the initial labor performed on your vehicle for a total runtime of <strong>2 months or 3,000 miles</strong> (whichever point is logged first from the original invoice service date). If an item fails due to workmanship within this specific structural limit, we will correct the error under standard review parameters.</p>
-    <p>Subsequent labor metrics or related system modifications handling adjustments after the primary structural coverage period terminates are governed on an adjusted calculation scale capped at a ceiling maximum rate of <strong>$70 per hour</strong>.</p>
-    <p>This labor warranty does not cover:</p>
-    <ul>
-      <li>Damage or failure unrelated to the original repair.</li>
-      <li>Normal wear and tear.</li>
-      <li>Issues caused by misuse, accident, subsequent repairs by another party, or failure to follow provided maintenance guidance.</li>
-      <li>Vehicles that have been driven, towed, or otherwise operated in a way that would reasonably aggravate the original issue.</li>
-    </ul>
-    <h2>4. Parts — Not Guaranteed By Atlas Motors</h2>
-    <div class="callout"><strong>Parts are covered only by the manufacturer's own warranty, not by
-      Atlas Motors.</strong> We select quality parts and pass along any
-      manufacturer warranty information available to us, but we do not
-      independently guarantee parts against defect or failure.</div>
-    <ul>
-      <li>If a part fails due to a manufacturing defect, the manufacturer's warranty process — not Atlas Motors — determines replacement or refund.</li>
-      <li>If you supply your own part for installation, Atlas Motors is not responsible for that part's quality, fit, or performance, and any warranty claim must be directed to the party who supplied it.</li>
-      <li>We will still stand behind the labor used to install any part, per Section 3 above.</li>
-    </ul>
-    <h2>5. Scheduling, Access, and Cancellations</h2>
-    <ul>
-      <li>You agree to provide safe, reasonable access to the vehicle at the agreed location and time.</li>
-      <li>We ask for as much notice as possible if you need to reschedule or cancel; repeated last-minute cancellations may affect future scheduling priority.</li>
-      <li>We reserve the right to decline or stop a job that presents a safety hazard to our technicians or that cannot be safely completed at the location provided.</li>
-    </ul>
-    <h2>6. Payment</h2>
-    <p>Payment is due upon completion of the Service unless otherwise agreed in
-    writing. We accept the payment methods listed on this Site or communicated
-    to you at the time of booking.</p>
-    <h2>7. Limitation of Liability</h2>
-    <p>To the fullest extent permitted by law, Atlas Motors' total liability for
-    any claim arising from our Services is limited to the amount you paid for
-    the specific Service giving rise to the claim. Atlas Motors is not liable
-    for indirect, incidental, or consequential damages, including loss of use
-    of your vehicle, towing costs unrelated to our work, or lost wages, except
-    where such limitation is not permitted by law.</p>
-    <h2>8. Your Responsibilities</h2>
-    <ul>
-      <li>Provide accurate information about your vehicle and the issue you're experiencing.</li>
-      <li>Disclose any known prior repairs, modifications, or existing damage relevant to the requested Service.</li>
-      <li>Ensure you have authority to approve repairs on the vehicle presented.</li>
-    </ul>
-    <h2>9. Governing Law</h2>
-    <p>These Terms are governed by the laws of the state in which Atlas Motors operates.</p>
-    <h2>10. Changes to These Terms</h2>
-    <p>We may update these Terms from time to time. Continued use of our
-    Services after an update constitutes acceptance of the revised Terms.</p>
-    <h2>11. Contact Us</h2>
-    <p>Questions about these Terms can be sent to
-    <a href="mailto:service@atlasmotorsusa.com">service@atlasmotorsusa.com</a>
-    or by calling <a href="tel:5102002033">510-200-2033</a>.</p>
-  </div>
-</div>
-
-<footer class="site">
-  <div class="footer-grid wrap">
-    <div>
-      <span class="wordmark" style="font-size:22px;">Atlas Motors</span>
-      <p style="color:var(--paper-dim); font-size:14px; max-width:320px; margin-top:10px;">
-        Mobile automotive repair and maintenance. We bring the shop to your driveway —
-        because getting your car fixed shouldn't take your whole day.
-      </p>
-    </div>
-    <div>
-      <h4>Site</h4>
-      <ul>
-        <li><a onclick="atlasShow('home')">Home</a></li>
-        <li><a onclick="atlasShow('about')">About Us</a></li>
-        <li><a onclick="atlasShow('home','atlas-services')">Services</a></li>
-        <li><a onclick="atlasShow('home','atlas-contact')">Book a Service</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Legal</h4>
-      <ul>
-        <li><a onclick="atlasShow('privacy')">Privacy Policy</a></li>
-        <li><a onclick="atlasShow('terms')">Terms of Service</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>&copy; <span id="atlas-year"></span> Atlas Motors. All rights reserved.</span>
-    <span>atlasmotorsusa.com</span>
-  </div>
-</footer>
-</div>
-
-<script>
-(function(){
-  document.getElementById('atlas-year').textContent = new Date().getFullYear();
-  
-  var navLinksContainer = document.getElementById('atlas-nav-links');
-  var hamburgerButton = document.getElementById('atlas-hamburger');
-
-  // Multi-Page Router Configuration
-  window.atlasShow = function(page, scrollToId){
-    var pages = document.querySelectorAll('#atlas-root .page');
-    for (var i=0; i<pages.length; i++){ pages[i].classList.remove('active'); }
-    document.getElementById('page-' + page).classList.add('active');
-    var links = document.querySelectorAll('#atlas-root nav.links a');
-    for (var j=0; j<links.length; j++){ links[j].classList.remove('active'); }
-    var current = document.querySelector('#atlas-root nav.links a[data-page="' + page + '"]');
-    if (current) { current.classList.add('active'); }
-    
-    // Auto-closes mobile drawer panel immediately when navigation action is taken
-    if (navLinksContainer) { navLinksContainer.classList.remove('mobile-open'); }
-    
-    // Forces visibility of the site header container during routing
-    var header = document.getElementById('atlas-site-header');
-    if (header) { header.classList.remove('header-hidden'); }
-    
-    window.scrollTo(0,0);
-    if (scrollToId){
-      setTimeout(function(){
-        var t = document.getElementById(scrollToId);
-        if (t) { t.scrollIntoView({behavior:'smooth'}); }
-      }, 60);
-    }
-  };
-
-  // Mobile Drawer Click Toggle Engine
-  if (hamburgerButton && navLinksContainer) {
-    hamburgerButton.addEventListener('click', function(e) {
-      e.stopPropagation();
-      navLinksContainer.classList.toggle('mobile-open');
-    });
-
-    // Automatically closes drawer if viewport background area is targeted
-    document.addEventListener('click', function() {
-      navLinksContainer.classList.remove('mobile-open');
-    });
-  }
-
-  // Header Auto-Hide Layout Scroll Tracker Logic
-  var lastScrollTop = 0;
-  var header = document.getElementById('atlas-site-header');
-  var scrollThreshold = 10; 
-
-  window.addEventListener('scroll', function() {
-    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    if (scrollTop < 0) scrollTop = 0;
-
-    var mobileMenuIsOpen = navLinksContainer && navLinksContainer.classList.contains('mobile-open');
-
-    if (scrollTop > 150 && !mobileMenuIsOpen) {
-      if (scrollTop > lastScrollTop + scrollThreshold) {
-        header.classList.add('header-hidden');
-      } else if (scrollTop < lastScrollTop - scrollThreshold) {
-        header.classList.remove('header-hidden');
-      }
-    } else {
-      header.classList.remove('header-hidden');
-    }
-    lastScrollTop = scrollTop;
-  }, { passive: true });
-
-})();
-</script>
-
-</body>
-</html>
