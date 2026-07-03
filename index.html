@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Atlas Motors | Mobile Mechanic</title>
   
+  <link rel="icon" type="image/png" href="favicon.png">
+  
   <style>
     html, body {
       margin: 0;
@@ -44,30 +46,38 @@
     linear-gradient(45deg,#0b0d10 25%,transparent 25%,transparent 75%,#0b0d10 75%);
   background-color:#cfd3d8; background-size:20px 20px; background-position:0 0,10px 10px; opacity:.9;
 }
+
+/* Header & Scrolling Menu Styles */
 #atlas-root header.site{
   position:sticky; top:0; z-index:50; background:linear-gradient(180deg,#101319,#0b0d10 90%);
   border-bottom:3px solid var(--race-red); box-shadow:0 6px 18px rgba(0,0,0,.45);
+  transition: transform 0.3s ease-in-out; 
+  will-change: transform;
 }
-#atlas-root .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 24px; max-width:1120px; margin:0 auto; flex-wrap:wrap; gap:12px;}
-#atlas-root .brand .wordmark{
-  font-size:28px; line-height:1;
-  background:linear-gradient(180deg,#7ea1ef 0%,#3a68e0 45%,#0d1f57 100%);
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-  -webkit-text-stroke:1.5px #000; filter:drop-shadow(0 2px 0 #000);
-  transform:skewX(-6deg); display:inline-block;
+#atlas-root header.site.header-hidden {
+  transform: translateY(-101%);
 }
-#atlas-root .brand .wordmark small{
-  display:block; font-size:12px; letter-spacing:2px;
-  background:linear-gradient(180deg,#c7cbd1,#6b7078);
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-  -webkit-text-stroke:.6px #000; transform:none;
-}
-#atlas-root .brand .tagline{color:var(--race-red-lt); font-family:'Anton',sans-serif; font-size:13px; letter-spacing:1px; text-transform:uppercase; margin-top:2px;}
-#atlas-root nav.links{display:flex; gap:22px; align-items:center; flex-wrap:wrap;}
+
+#atlas-root .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 24px; max-width:1120px; margin:0 auto; gap:12px;}
+#atlas-root nav.links{display:flex; gap:22px; align-items:center;}
 #atlas-root nav.links a{color:var(--paper-dim); font-weight:700; letter-spacing:.5px; text-transform:uppercase; font-size:14px; padding:6px 2px; border-bottom:2px solid transparent;}
 #atlas-root nav.links a:hover,#atlas-root nav.links a.active{color:var(--paper); border-color:var(--race-red);}
 #atlas-root .nav-call{background:var(--race-red); color:#fff !important; padding:10px 16px !important; border-radius:6px; border-bottom:none !important; font-family:'Anton',sans-serif; letter-spacing:1px;}
 #atlas-root .nav-call:hover{background:var(--race-red-lt); color:#fff !important;}
+
+/* Hamburger Menu Icon Styles */
+#atlas-root .menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--paper);
+  font-size: 32px;
+  cursor: pointer;
+  padding: 8px;
+  line-height: 1;
+  z-index: 100;
+}
+
 #atlas-root .hero{position:relative; overflow:hidden; padding:86px 24px 70px;
   background:linear-gradient(180deg,rgba(13,31,87,.35),transparent 60%),
     repeating-linear-gradient(-35deg,rgba(255,255,255,.03) 0 3px,transparent 3px 46px), var(--asphalt);
@@ -80,7 +90,7 @@
   transform:skewX(-4deg); transform-origin:left; line-height:.95;}
 #atlas-root .hero h1 .grey{background:linear-gradient(180deg,#d4d7db 0%,#9aa0a8 45%,#2b2f35 100%);
   -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-stroke:2px #000;}
-#atlas-root .hero .sub{max-width:640px; font-size:20px; color:var(--paper-dim); margin:18px 0 30px;}
+#atlas-root .hero .sub{max-width:640px; font-size:20px; color:var(--paper-dim); margin:18px 0 30px; font-weight:500;}
 #atlas-root .hero .sub strong{color:var(--paper);}
 #atlas-root .cta-row{display:flex; gap:16px; flex-wrap:wrap;}
 #atlas-root .btn{display:inline-block; font-family:'Anton',sans-serif; letter-spacing:1px; text-transform:uppercase;
@@ -107,7 +117,7 @@
 #atlas-root .plate p{color:var(--paper-dim); margin:0; font-size:16px;}
 #atlas-root .plate .icon{font-family:'Anton',sans-serif; font-size:13px; letter-spacing:2px; color:var(--steel-blue-3); margin-bottom:10px; text-transform:uppercase;}
 #atlas-root section{padding:70px 24px;}
-#atlas-root .section-head{max-width:680px; margin:0 auto 42px;}
+#atlas-root .section-head{max-width:680px; margin:0 auto 42px; font-weight:500;}
 #atlas-root .section-head .kicker{color:var(--race-red-lt); font-family:'Anton',sans-serif; letter-spacing:3px; font-size:13px;}
 #atlas-root .section-head h2{font-size:clamp(30px,4vw,46px); color:var(--paper);}
 #atlas-root .section-head p{color:var(--paper-dim); font-size:18px; margin-top:10px;}
@@ -115,10 +125,10 @@
 #atlas-root .grid{display:grid; gap:22px;}
 #atlas-root .grid-3{grid-template-columns:repeat(3,1fr);}
 #atlas-root .alt{background:linear-gradient(180deg,#101319,#0b0d10);}
-#atlas-root .steps{display:grid; gap:22px; grid-template-columns:repeat(4,1fr);}
+#atlas-root .steps{display:grid; gap:22px; grid-template-columns:repeat(4,1fr); font-weight:500;}
 #atlas-root .step h3{font-size:18px; margin:6px 0 6px; color:var(--paper);}
 #atlas-root .step p{color:var(--paper-dim); font-size:15px; margin:0;}
-#atlas-root .warranty{display:grid; grid-template-columns:1.2fr 1fr; gap:0; align-items:stretch; border:2px solid #000; border-radius:var(--radius); overflow:hidden;}
+#atlas-root .warranty{display:grid; grid-template-columns:1.2fr 1fr; gap:0; align-items:stretch; border:2px solid #000; border-radius:var(--radius); overflow:hidden; font-weight:500;}
 #atlas-root .warranty .side{padding:34px 30px;}
 #atlas-root .warranty .do{background:linear-gradient(160deg,#294a9e,#060d29);}
 #atlas-root .warranty .dont{background:linear-gradient(160deg,#2b2f35,#101317);}
@@ -126,13 +136,13 @@
 #atlas-root .warranty ul{margin:14px 0 0; padding-left:20px; color:var(--paper-dim);}
 #atlas-root .warranty li{margin-bottom:8px;}
 #atlas-root .warranty .fine{grid-column:1/-1; background:#08090b; padding:18px 30px; color:var(--paper-dim); font-size:14px; border-top:2px solid #000;}
-#atlas-root details.faq{background:var(--panel); border:2px solid #000; border-radius:8px; padding:16px 20px; margin-bottom:12px;}
+#atlas-root details.faq{background:var(--panel); border:2px solid #000; border-radius:8px; padding:16px 20px; margin-bottom:12px; font-weight:500;}
 #atlas-root details.faq summary{cursor:pointer; font-family:'Anton',sans-serif; letter-spacing:.5px; font-size:16px; color:var(--paper); list-style:none;}
 #atlas-root details.faq summary::-webkit-details-marker{display:none;}
 #atlas-root details.faq summary::before{content:"+ "; color:var(--race-red-lt);}
 #atlas-root details.faq[open] summary::before{content:"\2013 ";}
 #atlas-root details.faq p{color:var(--paper-dim); margin:12px 0 0;}
-#atlas-root .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px;}
+#atlas-root .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px; font-weight:500;}
 #atlas-root .contact-item{display:flex; gap:14px; align-items:flex-start; margin-bottom:18px;}
 #atlas-root .contact-item .tag{font-family:'Anton',sans-serif; color:var(--race-red-lt); font-size:12px; letter-spacing:2px; display:block; margin-bottom:2px;}
 #atlas-root .contact-item a, #atlas-root .contact-item span{color:var(--paper); font-size:18px; font-weight:600;}
@@ -153,7 +163,7 @@
 #atlas-root footer.site a:hover{color:var(--paper);}
 #atlas-root .footer-bottom{max-width:1120px; margin:30px auto 0; padding-top:20px; border-top:1px solid rgba(255,255,255,.08);
   display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; color:#6b7078; font-size:13px;}
-#atlas-root .legal{max-width:820px; margin:0 auto; padding:60px 24px 90px;}
+#atlas-root .legal{max-width:820px; margin:0 auto; padding:60px 24px 90px; font-weight:500;}
 #atlas-root .legal h1{font-size:clamp(34px,5vw,52px);
   background:linear-gradient(180deg,#8fb0f2 0%,#3a68e0 45%,#0a1a4d 100%); -webkit-background-clip:text; background-clip:text; color:transparent;
   -webkit-text-stroke:2px #000; filter:drop-shadow(0 4px 0 #000); transform:skewX(-4deg); transform-origin:left; display:inline-block;}
@@ -164,34 +174,78 @@
 #atlas-root .legal strong{color:var(--paper);}
 #atlas-root .legal .callout{background:var(--panel); border:2px solid #000; border-left:4px solid var(--race-red-lt); border-radius:6px; padding:18px 20px; margin:20px 0;}
 #atlas-root .about-hero{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;}
-#atlas-root .timeline{border-left:3px solid var(--race-red); margin-left:8px; padding-left:26px;}
+#atlas-root .timeline{border-left:3px solid var(--race-red); margin-left:8px; padding-left:26px; font-weight:500;}
 #atlas-root .timeline .tl-item{position:relative; margin-bottom:30px;}
 #atlas-root .timeline .tl-item::before{content:""; position:absolute; left:-32px; top:4px; width:14px; height:14px; border-radius:50%; background:var(--race-red-lt); border:2px solid #000;}
 #atlas-root .timeline .yr{font-family:'Anton',sans-serif; color:var(--steel-blue-3); font-size:14px; letter-spacing:1px;}
 #atlas-root .timeline h3{font-size:19px; margin:4px 0 6px; color:var(--paper);}
 #atlas-root .timeline p{color:var(--paper-dim); margin:0;}
+
+/* New styles for Testimonials element mechanics */
+#atlas-root .review-stars{color:#f5b041; font-size:16px; letter-spacing:1px; margin-bottom:6px;}
+#atlas-root .review-meta{display:flex; justify-content:space-between; align-items:center; margin-top:14px; border-top:1px solid rgba(255,255,255,.08); padding-top:10px; font-size:14px;}
+#atlas-root .review-author{color:var(--paper); font-weight:700;}
+#atlas-root .review-car{color:var(--race-red-lt); font-weight:600; text-transform:uppercase; font-size:12px; letter-spacing:0.5px;}
+
+/* Responsive Layout Breakpoints */
 @media (max-width:860px){
   #atlas-root .grid-3, #atlas-root .warranty, #atlas-root .contact-grid, #atlas-root .about-hero{grid-template-columns:1fr;}
   #atlas-root .vehicle-dropdown-group {flex-direction: column; gap: 14px;}
 }
 @media (max-width:900px){ #atlas-root .steps{grid-template-columns:1fr 1fr;} }
 @media (max-width:560px){ #atlas-root .steps{grid-template-columns:1fr;} }
+
+/* Mobile Navigation Breakpoint Override Mechanics */
+@media (max-width: 960px) {
+  #atlas-root .menu-toggle {
+    display: block; /* Turns on the ☰ button */
+  }
+  #atlas-root nav.links {
+    display: none; /* Hides horizontal view on mobile viewports */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #101319;
+    border-bottom: 3px solid var(--race-red);
+    padding: 24px;
+    gap: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    align-items: stretch;
+    text-align: center;
+  }
+  #atlas-root nav.links.mobile-open {
+    display: flex;
+  }
+  #atlas-root nav.links a {
+    font-size: 18px;
+    padding: 10px 0;
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  #atlas-root .nav-call {
+    margin-top: 8px;
+  }
+}
 </style>
 
-<header class="site">
+<header class="site" id="atlas-site-header">
   <div class="nav">
     <div class="brand">
-      <div>
-        <span class="wordmark">Atlas<br><small>MOTORS</small></span>
-        <div class="tagline">Because RACECAR</div>
-      </div>
+      <a href="javascript:void(0);" onclick="atlasShow('home')" style="display: block;">
+        <img src="logo.png" alt="Atlas Motors Logo" style="height: 175px; width: auto; display: block;">
+      </a>
     </div>
-    <nav class="links">
-      <a data-page="home" onclick="atlasShow('home')" class="active">Home</a>
-      <a data-page="about" onclick="atlasShow('about')">About</a>
-      <a onclick="atlasShow('home','atlas-services')">Services</a>
-      <a onclick="atlasShow('home','atlas-faq')">FAQ</a>
-      <a onclick="atlasShow('home','atlas-contact')">Contact</a>
+    
+    <button class="menu-toggle" id="atlas-hamburger" aria-label="Toggle Navigation Menu">☰</button>
+    
+    <nav class="links" id="atlas-nav-links">
+      <a href="javascript:void(0);" data-page="home" onclick="atlasShow('home')" class="active">Home</a>
+      <a href="javascript:void(0);" data-page="about" onclick="atlasShow('about')">About</a>
+      <a href="javascript:void(0);" onclick="atlasShow('home','atlas-services')">Services</a>
+      <a href="javascript:void(0);" onclick="atlasShow('home','atlas-faq')">FAQ</a>
+      <a href="javascript:void(0);" onclick="atlasShow('home','atlas-contact')">Contact</a>
       <a href="tel:5102002033" class="nav-call">Call Now</a>
     </nav>
   </div>
@@ -206,9 +260,9 @@
       <p class="sub">Atlas Motors brings a fully-equipped mechanic straight to your driveway,
         office lot, or roadside. <strong>No tow. No waiting room. No wasted Saturday.</strong></p>
       <div class="cta-row">
-        <a onclick="atlasShow('home','atlas-contact')" class="btn btn-red">Book a Service</a>
+        <a href="javascript:void(0);" onclick="atlasShow('home','atlas-contact')" class="btn btn-red">Book a Service</a>
         <a href="tel:5102002033" class="btn btn-steel">Call 510-200-2033</a>
-        <a onclick="atlasShow('home','atlas-services')" class="btn btn-ghost">See Services</a>
+        <a href="javascript:void(0);" onclick="atlasShow('home','atlas-services')" class="btn btn-ghost">See Services</a>
       </div>
       <div class="hero-stats">
         <div class="stat"><b>100%</b><span>Labor Guaranteed</span></div>
@@ -255,12 +309,10 @@
     <div class="wrap">
       <div class="section-head center"><div class="kicker">How It Works</div><h2>Book It, Then Forget The Shop Exists</h2></div>
       <div class="steps">
-        <div class="steps">
-          <div class="step"><h3>Tell us what's wrong</h3><p>Call, text, or fill out the booking form with your symptoms and location.</p></div>
-          <div class="step"><h3>Get a quote</h3><p>We diagnose remotely when we can, and quote labor up front — no surprise fees.</p></div>
-          <div class="step"><h3>We roll up</h3><p>Our tech arrives with the tools and parts needed, right to your driveway or curb.</p></div>
-          <div class="step"><h3>Drive off fixed</h3><p>Pay on-site, keep your receipt, and get back to your day. No loaner cars, no rides needed.</p></div>
-        </div>
+        <div class="step"><h3>Tell us what's wrong</h3><p>Call, text, or fill out the booking form with your symptoms and location.</p></div>
+        <div class="step"><h3>Get a quote</h3><p>We diagnose remotely when we can, and quote labor up front — no surprise fees.</p></div>
+        <div class="step"><h3>We roll up</h3><p>Our tech arrives with the tools and parts needed, right to your driveway or curb.</p></div>
+        <div class="step"><h3>Drive off fixed</h3><p>Pay on-site, keep your receipt, and get back to your day. No loaner cars, no rides needed.</p></div>
       </div>
     </div>
   </section>
@@ -273,20 +325,49 @@
         <p>Here's exactly what's covered — no vague promises, no asterisks hiding in the invoice.</p></div>
       <div class="warranty">
         <div class="side do"><h3>&#9989; Guaranteed by Atlas Motors</h3>
-          <ul><li>All labor we perform is warrantied for 90 days from the service date.</li>
-          <li>If a repair fails due to our workmanship, we make it right at no extra labor charge.</li>
-          <li>Diagnostics are backed by a clear, written explanation of the issue found.</li></ul></div>
+          <ul><li>All initial labor performed on your vehicle is warrantied for a duration of 2 months or 3,000 miles (whichever threshold occurs first).</li>
+          <li>If a repair fails due to workmanship within this window, we will return to diagnose and correct the issue.</li>
+          <li>Subsequent or secondary labor coverage adjustments required after the primary framework period expires are strictly capped at a rate of $70 per hour.</li></ul></div>
         <div class="side dont"><h3>&#9881; Covered by the Manufacturer, Not Us</h3>
           <ul><li>Parts are covered only by the part manufacturer's own warranty, not by Atlas Motors.</li>
           <li>We install customer-supplied parts at the customer's risk if requested.</li>
           <li>Pre-existing wear, unrelated failures, and normal wear items are not covered.</li></ul></div>
-        <div class="fine">In short: <strong>we guarantee our labor. Parts are guaranteed by whoever made them.</strong>
-          Full details are in our <a onclick="atlasShow('terms')">Terms of Service</a>.</div>
+        <div class="fine">In short: <strong>we guarantee our labor terms. Parts are guaranteed by whoever made them.</strong>
+          Full details are listed in our <a href="javascript:void(0);" onclick="atlasShow('terms')">Terms of Service</a>.</div>
       </div>
     </div>
   </section>
 
-  <section class="alt" id="atlas-faq">
+  <section class="alt" id="atlas-testimonials">
+    <div class="wrap">
+      <div class="section-head center">
+        <div class="kicker">Reviews from the Pavement</div>
+        <h2>What Your Neighbors Say</h2>
+        <p>Read real feedback from local drivers who skipped the shop lobby entirely.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="plate"><span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+          <div class="review-stars">★★★★★</div>
+          <p style="font-size:16px; margin:0; font-style:italic;">"My starter motor died on a Thursday afternoon. Atlas came right to my workplace parking garage after my shift ended and swapped it out in no time. Incredible service, zero hassle."</p>
+          <div class="review-meta"><span class="review-author">Marcus T.</span><span class="review-car">Honda Civic</span></div>
+        </div>
+        <div class="plate"><span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+          <div class="review-stars">★★★★★</div>
+          <p style="font-size:16px; margin:0; font-style:italic;">"Outstanding pricing transparency. Got my front brake pads and rotors changed right in my driveway in the evening. No upsell attempts for fake problems like the big shops do."</p>
+          <div class="review-meta"><span class="review-author">Sarah L.</span><span class="review-car">Toyota RAV4</span></div>
+        </div>
+        <div class="plate"><span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+          <div class="review-stars">★★★★★</div>
+          <p style="font-size:16px; margin:0; font-style:italic;">"Had them look at a used truck I wanted to buy. The pre-purchase inspection saved me from making a huge $5,000 mistake with a hidden transmission fault. Worth every penny."</p>
+          <div class="review-meta"><span class="review-author">David K.</span><span class="review-car">Ford F-150</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="checker-strip"></div>
+
+  <section id="atlas-faq">
     <div class="wrap">
       <div class="section-head center"><div class="kicker">Questions</div><h2>Frequently Asked</h2></div>
       <div style="max-width:760px;margin:0 auto;">
@@ -294,10 +375,16 @@
           <p>We proudly offer regular coverage throughout Dublin, Pleasanton, Livermore, San Leandro, Castro Valley, San Ramon, Sunol, Fremont, Hayward, Walnut Creek, and Alamo.</p></details>
         <details class="faq"><summary>Is there an extra fee for long-distance service calls?</summary>
           <p>Yes. For locations exceeding a 15-mile travel distance from our home hub, we apply a one-time $45 <strong>Pavement Extension Premium</strong> to account for transit resources and travel time.</p></details>
+        <details class="faq"><summary>What kind of driveway or space do you need?</summary>
+          <p>We just need a relatively flat asphalt or concrete driveway, a dedicated parking space, or a quiet curbside street option where we can safely stand near your vehicle with access for our mobile tool van.</p></details>
+        <details class="faq"><summary>What happens if the weather is bad (heavy rain, storms)?</summary>
+          <p>If harsh outdoor weather conditions create a safety hazard or compromise the quality of the precision mechanical repair, we will proactively reach out to arrange a hassle-free reschedule at your very earliest convenience.</p></details>
+        <details class="faq"><summary>Do I need to be stuck waiting at home during the appointment?</summary>
+          <p>Not at all! That is the beauty of mobile service. As long as you introduce yourself at the start, hand off the keys, and point us to the vehicle, you are free to work inside, run errands, or relax. We will text you a summary when completed.</p></details>
         <details class="faq"><summary>Do you supply the parts?</summary>
           <p>Yes, in most cases we source and bring quality parts to the job. You're also welcome to supply your own parts; if you do, we'll install them but can't warranty the part itself.</p></details>
         <details class="faq"><summary>How do I pay?</summary>
-          <p>Card, tap-to-pay, or digital payment on-site once the work is complete and you're satisfied. We'll text or email a receipt.</p></details>
+          <p>We accept <strong>Cash, Zelle, or Venmo only</strong>. Payment is handled on-site once the repair is completely done to your satisfaction, and a detailed summary receipt will be issued straight to your text or email.</p></details>
         <details class="faq"><summary>What if the repair needs shop equipment (a lift, alignment rack, etc.)?</summary>
           <p>Some jobs genuinely need a shop — like frame work or four-wheel alignments. We'll tell you up front if that's the case instead of taking your money for a job we can't finish right.</p></details>
         <details class="faq"><summary>Is there a diagnostic fee?</summary>
@@ -316,7 +403,7 @@
         <div>
           <div class="contact-item"><div><span class="tag">Call / Text</span><a href="tel:5102002033">510-200-2033</a></div></div>
           <div class="contact-item"><div><span class="tag">Email</span><a href="mailto:service@atlasmotorsusa.com">service@atlasmotorsusa.com</a></div></div>
-          <div class="contact-item"><div><span class="tag">Service Hours</span><span>Mon&ndash;Sat, 8 AM &ndash; 6 PM</span></div></div>
+          <div class="contact-item"><div><span class="tag">Service Hours</span><span>Mon&ndash;Sat, 5 PM &ndash; 12 AM (Midnight)</span></div></div>
           <div class="contact-item">
             <div>
               <span class="tag">Coverage Areas</span>
@@ -404,7 +491,7 @@
         <div class="tl-item"><div class="yr">Step One</div><h3>Listen First</h3><p>Every job starts with your description of the problem — noises, warning lights, when it happens. That context shapes the diagnosis.</p></div>
         <div class="tl-item"><div class="yr">Step Two</div><h3>Diagnose Before We Sell</h3><p>We confirm the actual root cause before quoting parts or labor, so you're not paying to guess.</p></div>
         <div class="tl-item"><div class="yr">Step Three</div><h3>Fix It Right, On-Site</h3><p>Our vans carry the tools and common parts to close out most jobs in a single visit.</p></div>
-        <div class="tl-item"><div class="yr">Step Four</div><h3>Stand Behind The Work</h3><p>90 days of labor coverage, a written summary of what was done, and a straight answer if something comes back.</p></div>
+        <div class="tl-item"><div class="yr">Step Four</div><h3>Stand Behind The Work</h3><p>Honest warranty rules, a written summary of what was done, and a straight answer if something comes back.</p></div>
       </div>
     </div>
   </section>
@@ -415,7 +502,7 @@
     <div class="wrap">
       <div class="section-head center"><div class="kicker">Ready When You Are</div><h2>Let's Get Your Car Sorted</h2><p style="margin-top:6px;">No shop visit required.</p></div>
       <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-        <a onclick="atlasShow('home','atlas-contact')" class="btn btn-red">Book a Service</a>
+        <a href="javascript:void(0);" onclick="atlasShow('home','atlas-contact')" class="btn btn-red">Book a Service</a>
         <a href="tel:5102002033" class="btn btn-steel">Call 510-200-2033</a>
       </div>
     </div>
@@ -434,21 +521,21 @@
     <ul>
       <li><strong>Information you give us directly</strong> — such as your name, phone number, email address, home or work address, and vehicle details, when you request a quote, book a service, or contact us by phone, text, email, or the form on this Site.</li>
       <li><strong>Service and vehicle information</strong> — details about your vehicle's condition, mileage, symptoms, and repair history that we collect while diagnosing or servicing your vehicle.</li>
-      <li><strong>Payment information</strong> — if you pay by card or digital payment, that transaction is processed by our third-party payment processor. We do not store full card numbers on our own systems.</li>
+      <li><strong>Payment information</strong> — if you choose to pay using supported digital methods like Zelle or Venmo, details are managed directly by those specific payment platforms. We do not process or store financial account coordinates on our own servers.</li>
       <li><strong>Automatically collected information</strong> — if you visit this Site, our hosting provider or analytics tools may collect standard technical data such as your IP address, browser type, and pages visited.</li>
     </ul>
     <h2>2. How We Use Your Information</h2>
     <ul>
       <li>To schedule, perform, and follow up on repair and maintenance services.</li>
       <li>To communicate with you about appointments, quotes, invoices, and service history.</li>
-      <li>To process payment for services rendered.</li>
+      <li>To verify settlement status for mobile service applications.</li>
       <li>To improve our Services, scheduling, and this Site.</li>
       <li>To comply with legal, tax, and recordkeeping obligations.</li>
     </ul>
     <p>We do not sell your personal information.</p>
     <h2>3. How We Share Information</h2>
     <ul>
-      <li><strong>Service providers</strong> — such as payment processors, scheduling or invoicing software, and parts suppliers, solely to complete your service.</li>
+      <li><strong>Service providers</strong> — such as digital platform tracking channels, scheduling or invoicing software, and parts suppliers, solely to complete your service.</li>
       <li><strong>Legal requirements</strong> — if required by law, subpoena, or to protect the rights, safety, or property of Atlas Motors, our customers, or others.</li>
       <li><strong>Business transfers</strong> — if Atlas Motors is involved in a merger, acquisition, or sale of assets, customer information may be transferred as part of that transaction.</li>
     </ul>
@@ -460,7 +547,6 @@
     <ul>
       <li>You may ask us to correct or update your contact information at any time.</li>
       <li>You may ask us to delete personal information we hold about you, subject to our legal and recordkeeping obligations.</li>
-      <li>You may opt out of promotional texts or emails at any time by replying "STOP" or contacting us directly.</li>
     </ul>
     <h2>6. Security</h2>
     <p>We take reasonable steps to protect your information, but no method of
@@ -500,10 +586,8 @@
       <li>Diagnostic fees, if applicable, will be disclosed before the visit.</li>
     </ul>
     <h2>3. Labor Warranty — What's Guaranteed</h2>
-    <p>Atlas Motors guarantees the <strong>labor</strong> performed on your
-    vehicle for <strong>90 days</strong> from the date of service. If a covered
-    repair fails within that period due to a defect in our workmanship, we will
-    correct it at no additional labor charge.</p>
+    <p>Atlas Motors guarantees the initial labor performed on your vehicle for a total runtime of <strong>2 months or 3,000 miles</strong> (whichever point is logged first from the original invoice service date). If an item fails due to workmanship within this specific structural limit, we will correct the error under standard review parameters.</p>
+    <p>Subsequent labor metrics or related system modifications handling adjustments after the primary structural coverage period terminates are governed on an adjusted calculation scale capped at a ceiling maximum rate of <strong>$70 per hour</strong>.</p>
     <p>This labor warranty does not cover:</p>
     <ul>
       <li>Damage or failure unrelated to the original repair.</li>
@@ -529,8 +613,7 @@
     </ul>
     <h2>6. Payment</h2>
     <p>Payment is due upon completion of the Service unless otherwise agreed in
-    writing. We accept the payment methods listed on this Site or communicated
-    to you at the time of booking.</p>
+    writing. We accept <strong>Cash, Zelle, or Venmo only</strong>. Credit card terminals and direct card tap-to-pay systems are not supported on-site.</p>
     <h2>7. Limitation of Liability</h2>
     <p>To the fullest extent permitted by law, Atlas Motors' total liability for
     any claim arising from our Services is limited to the amount you paid for
@@ -568,17 +651,17 @@
     <div>
       <h4>Site</h4>
       <ul>
-        <li><a onclick="atlasShow('home')">Home</a></li>
-        <li><a onclick="atlasShow('about')">About Us</a></li>
-        <li><a onclick="atlasShow('home','atlas-services')">Services</a></li>
-        <li><a onclick="atlasShow('home','atlas-contact')">Book a Service</a></li>
+        <li><a href="javascript:void(0);" onclick="atlasShow('home')">Home</a></li>
+        <li><a href="javascript:void(0);" onclick="atlasShow('about')">About Us</a></li>
+        <li><a href="javascript:void(0);" onclick="atlasShow('home','atlas-services')">Services</a></li>
+        <li><a href="javascript:void(0);" onclick="atlasShow('home','atlas-contact')">Book a Service</a></li>
       </ul>
     </div>
     <div>
       <h4>Legal</h4>
       <ul>
-        <li><a onclick="atlasShow('privacy')">Privacy Policy</a></li>
-        <li><a onclick="atlasShow('terms')">Terms of Service</a></li>
+        <li><a href="javascript:void(0);" onclick="atlasShow('privacy')">Privacy Policy</a></li>
+        <li><a href="javascript:void(0);" onclick="atlasShow('terms')">Terms of Service</a></li>
       </ul>
     </div>
   </div>
@@ -592,6 +675,11 @@
 <script>
 (function(){
   document.getElementById('atlas-year').textContent = new Date().getFullYear();
+  
+  var navLinksContainer = document.getElementById('atlas-nav-links');
+  var hamburgerButton = document.getElementById('atlas-hamburger');
+
+  // Multi-Page Router Configuration
   window.atlasShow = function(page, scrollToId){
     var pages = document.querySelectorAll('#atlas-root .page');
     for (var i=0; i<pages.length; i++){ pages[i].classList.remove('active'); }
@@ -600,6 +688,14 @@
     for (var j=0; j<links.length; j++){ links[j].classList.remove('active'); }
     var current = document.querySelector('#atlas-root nav.links a[data-page="' + page + '"]');
     if (current) { current.classList.add('active'); }
+    
+    // Auto-closes mobile drawer panel immediately when navigation action is taken
+    if (navLinksContainer) { navLinksContainer.classList.remove('mobile-open'); }
+    
+    // Forces visibility of the site header container during routing
+    var header = document.getElementById('atlas-site-header');
+    if (header) { header.classList.remove('header-hidden'); }
+    
     window.scrollTo(0,0);
     if (scrollToId){
       setTimeout(function(){
@@ -608,6 +704,42 @@
       }, 60);
     }
   };
+
+  // Mobile Drawer Click Toggle Engine
+  if (hamburgerButton && navLinksContainer) {
+    hamburgerButton.addEventListener('click', function(e) {
+      e.stopPropagation();
+      navLinksContainer.classList.toggle('mobile-open');
+    });
+
+    // Automatically closes drawer if viewport background area is targeted
+    document.addEventListener('click', function() {
+      navLinksContainer.classList.remove('mobile-open');
+    });
+  }
+
+  // Header Auto-Hide Layout Scroll Tracker Logic
+  var lastScrollTop = 0;
+  var header = document.getElementById('atlas-site-header');
+  var scrollThreshold = 10; 
+
+  window.addEventListener('scroll', function() {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop < 0) scrollTop = 0;
+
+    var mobileMenuIsOpen = navLinksContainer && navLinksContainer.classList.contains('mobile-open');
+
+    if (scrollTop > 150 && !mobileMenuIsOpen) {
+      if (scrollTop > lastScrollTop + scrollThreshold) {
+        header.classList.add('header-hidden');
+      } else if (scrollTop < lastScrollTop - scrollThreshold) {
+        header.classList.remove('header-hidden');
+      }
+    } else {
+      header.classList.remove('header-hidden');
+    }
+    lastScrollTop = scrollTop;
+  }, { passive: true });
 
   // Data mapping structure for comprehensive 1975+ makes & models
   var autoData = {
