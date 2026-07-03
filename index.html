@@ -153,7 +153,24 @@
 #atlas-root .vehicle-dropdown-group {display: flex; gap: 10px;}
 #atlas-root .vehicle-dropdown-group select {flex: 1;}
 #atlas-root .badge-container {display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;}
-#atlas-root .badge {background: var(--panel-light); border: 1px solid #3d444e; border-radius: 4px; padding: 4px 10px; font-size: 14px; color: var(--paper-dim);}
+
+/* Interactive city badges styling rules */
+#atlas-root .badge {
+  background: var(--panel-light); 
+  border: 1px solid #3d444e; 
+  border-radius: 4px; 
+  padding: 4px 10px; 
+  font-size: 14px; 
+  color: var(--paper-dim);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+#atlas-root .badge:hover {
+  background: var(--race-red);
+  color: #fff;
+  border-color: var(--race-red-lt);
+}
+
 #atlas-root footer.site{background:#08090b; border-top:3px solid var(--race-red); padding:44px 24px 26px;}
 #atlas-root .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:32px;}
 #atlas-root footer.site h4{font-family:'Anton',sans-serif; color:var(--paper); font-size:15px; letter-spacing:1px; margin:0 0 12px;}
@@ -174,7 +191,7 @@
 #atlas-root .legal strong{color:var(--paper);}
 #atlas-root .legal .callout{background:var(--panel); border:2px solid #000; border-left:4px solid var(--race-red-lt); border-radius:6px; padding:18px 20px; margin:20px 0;}
 #atlas-root .about-hero{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;}
-#atlas-root .timeline{border-left:3px solid var(--race-red); margin-left:8px; padding-left:26px; font-weight:500;}
+#atlas-root .timeline {border-left:3px solid var(--race-red); margin-left:8px; padding-left:26px; font-weight:500;}
 #atlas-root .timeline .tl-item{position:relative; margin-bottom:30px;}
 #atlas-root .timeline .tl-item::before{content:""; position:absolute; left:-32px; top:4px; width:14px; height:14px; border-radius:50%; background:var(--race-red-lt); border:2px solid #000;}
 #atlas-root .timeline .yr{font-family:'Anton',sans-serif; color:var(--steel-blue-3); font-size:14px; letter-spacing:1px;}
@@ -407,19 +424,19 @@
           <div class="contact-item">
             <div>
               <span class="tag">Coverage Areas</span>
-              <span>Our core service footprint includes:</span>
+              <span>Our core service footprint includes (Click any city to select it):</span>
               <div class="badge-container">
-                <span class="badge">Dublin</span>
-                <span class="badge">Pleasanton</span>
-                <span class="badge">Livermore</span>
-                <span class="badge">San Leandro</span>
-                <span class="badge">Castro Valley</span>
-                <span class="badge">San Ramon</span>
-                <span class="badge">Sunol</span>
-                <span class="badge">Fremont</span>
-                <span class="badge">Hayward</span>
-                <span class="badge">Walnut Creek</span>
-                <span class="badge">Alamo</span>
+                <span class="badge" onclick="atlasSelectCity('Dublin')">Dublin</span>
+                <span class="badge" onclick="atlasSelectCity('Pleasanton')">Pleasanton</span>
+                <span class="badge" onclick="atlasSelectCity('Livermore')">Livermore</span>
+                <span class="badge" onclick="atlasSelectCity('San Leandro')">San Leandro</span>
+                <span class="badge" onclick="atlasSelectCity('Castro Valley')">Castro Valley</span>
+                <span class="badge" onclick="atlasSelectCity('San Ramon')">San Ramon</span>
+                <span class="badge" onclick="atlasSelectCity('Sunol')">Sunol</span>
+                <span class="badge" onclick="atlasSelectCity('Fremont')">Fremont</span>
+                <span class="badge" onclick="atlasSelectCity('Hayward')">Hayward</span>
+                <span class="badge" onclick="atlasSelectCity('Walnut Creek')">Walnut Creek</span>
+                <span class="badge" onclick="atlasSelectCity('Alamo')">Alamo</span>
               </div>
               <p style="font-size:14px; margin-top:10px; color:var(--paper-dim);"><em>*Note: A $45 <strong>Pavement Extension Premium</strong> applies to setups outside our standard 15-mile service boundary.</em></p>
             </div>
@@ -444,7 +461,7 @@
             </div>
           </div>
           
-          <div><label for="atlas-issue">What's going on?</label><textarea id="atlas-issue" name="Issue" rows="4"></textarea></div>
+          <div><label for="atlas-issue">What's going on?</label><textarea id="atlas-issue" name="Issue" rows="4" placeholder="Type your mechanical symptoms or location instructions here..."></textarea></div>
           <button type="submit" class="btn btn-red" style="align-self:flex-start;">Send Request</button>
         </form>
       </div>
@@ -702,6 +719,29 @@
         var t = document.getElementById(scrollToId);
         if (t) { t.scrollIntoView({behavior:'smooth'}); }
       }, 60);
+    }
+  };
+
+  // Auto-populates the chosen city name into the form issue description area
+  window.atlasSelectCity = function(cityName) {
+    var issueTextarea = document.getElementById('atlas-issue');
+    if (issueTextarea) {
+      var cityPrefix = "Location: " + cityName + " - ";
+      
+      // If the field is currently clean or untouched, drop the location marker straight in
+      if (!issueTextarea.value.trim()) {
+        issueTextarea.value = cityPrefix;
+      } else {
+        // If they already started typing text, gently append it to the front safely
+        if (!issueTextarea.value.includes("Location:")) {
+          issueTextarea.value = cityPrefix + issueTextarea.value;
+        } else {
+          // If a city string is already loaded inside, swap it cleanly
+          issueTextarea.value = issueTextarea.value.replace(/^Location:\s*[^-\n]*\s*-\s*/, cityPrefix);
+        }
+      }
+      // Draw focus cleanly down to the input field so they know it caught the click
+      issueTextarea.focus();
     }
   };
 
